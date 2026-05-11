@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Invited! - 18th Birthday Celebration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Envelope Container -->
+    <div class="envelope-container" id="envelopeContainer">
+        <div class="envelope" id="envelope">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body">
+                
+            </div>
+        </div>
+        <p class="click-text">Click the envelope to reveal your invitation</p>
+    </div>
+
+    <!-- Cards Container (Hidden initially) -->
+    <div class="cards-container" id="cardsContainer" style="display: none;">
+        
+        <!-- Main Invitation Card -->
+        <div class="card active" id="card-main">
+            <button class="close-btn" onclick="closeInvitation()">✕</button>
+            <div class="card-content">
+                <h1 class="card-title">You're Invited!</h1>
+                <p class="card-message">to celebrate the 18th birthday of</p>
+                <h2 class="birthday-name">Regielyn Joyce</h2>
+                <p class="card-subtext">Join us for an unforgettable celebration!</p>
+                <div class="card-buttons">
+                    <button class="nav-btn" onclick="showCard('card-guests')">👥 Meet the Guests</button>
+                    <button class="nav-btn" onclick="showCard('card-about')">🎂 About Birthday Person</button>
+                    <button class="nav-btn" onclick="showCard('card-details')">📋 Event Details</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guests Card -->
+        <div class="card" id="card-guests">
+            <button class="close-btn" onclick="closeInvitation()">✕</button>
+            <button class="back-btn" onclick="showCard('card-main')">← Back</button>
+            <div class="card-content">
+                <h2 class="card-title">What 18th are you?</h2>
+                <div class="guests-grid">
+                    <div class="card-buttons">
+                    <button class="nav-btn" onclick="showCard('card-yarns')">🧶 18 Yarns</button>
+                    <button class="nav-btn" onclick="showCard('card-candles')">🕯️ 18 Candles</button>
+                    <button class="nav-btn" onclick="showCard('card-bills')">💰 18 Bills</button>
+                    <button class="nav-btn" onclick="showCard('card-gifts')">🎁 18 Gifts</button>
+                    <button class="nav-btn" onclick="showCard('card-wines')">🍷 18 wines</button>
+                    <button class="nav-btn" onclick="showCard('card-dances')">💃 18 Dances</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!--18 Yarns-->
+        <div class="card" id="card-yarns">
+            <button class="close-btn" onclick="closeInvitation()">✕</button>
+            <button class="back-btn" onclick="showCard('card-main')">← Back</button>
+            <div class="card-content">
+                <h2 class="card-title">18 Yarns</h2>
+                <div class="guests-grid">
+        </div>
+
+        <!-- About Birthday Person Card -->
+        <div class="card" id="card-about">
+            <button class="close-btn" onclick="closeInvitation()">✕</button>
+            <button class="back-btn" onclick="showCard('card-main')">← Back</button>
+            <div class="card-content">
+                <h2 class="card-title">About the Birthday Person</h2>
+                <div class="about-section">
+                    <p class="about-text">
+                        <strong>Name:</strong> Your Name Here
+                    </p>
+                    <p class="about-text">
+                        <strong>Age:</strong> Turning 18!
+                    </p>
+                    <p class="about-text">
+                        <strong>Bio:</strong> Add a fun bio about yourself! Share your interests, achievements, hobbies, dreams, or anything you'd like your guests to know about you.
+                    </p>
+                    <p class="about-text">
+                        <strong>Fun Fact:</strong> Add a fun fact about yourself here!
+                    </p>
+                    <p class="about-text">
+                        <strong>Favorite Quote:</strong> "Add your favorite quote or life motto here!"
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Details Card -->
+        <div class="card" id="card-details">
+            <button class="close-btn" onclick="closeInvitation()">✕</button>
+            <button class="back-btn" onclick="showCard('card-main')">← Back</button>
+            <div class="card-content">
+                <h2 class="card-title">Event Details</h2>
+                <div class="details-section">
+                    <div class="detail-item">
+                        <h3>📅 Date</h3>
+                        <p>Saturday, June 15, 2026</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3>🕐 Time</h3>
+                        <p>6:00 PM - 11:00 PM</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3>📍 Location</h3>
+                        <p>123 Party Street<br>Your City, Your State 12345</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3>🎉 Theme</h3>
+                        <p>Add your theme here! (e.g., Glamorous Gold & Black, Tropical Paradise, Neon Glow, etc.)</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3>👕 Dress Code</h3>
+                        <p>Cocktail Attire</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3>📞 RSVP</h3>
+                        <p>Please reply by June 1st<br>Contact: your.email@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
