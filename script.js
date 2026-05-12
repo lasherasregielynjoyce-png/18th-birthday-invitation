@@ -5,63 +5,56 @@ const envelopeContainer = document.getElementById('envelopeContainer');
 const cardsContainer = document.getElementById('cardsContainer');
 
 // Add click event to open envelope
-if (envelope) {
-    envelope.addEventListener('click', function() {
-        console.log('Envelope clicked!');
-        
-        // Add the 'open' class to trigger the CSS animation
-        envelope.classList.add('open');
-        
-        // After the flap opens (0.6s), hide the envelope and show the cards
-        setTimeout(function() {
-            console.log('Showing cards...');
-            envelopeContainer.style.display = 'none';
-            cardsContainer.style.display = 'flex';
-            
-            // Make sure the main card is active
-            showCard('card-main');
-        }, 600);
+envelope.addEventListener('click', function () {
+
+    // Open envelope
+    envelope.classList.add('open');
+
+    // Card starts rising immediately
+    cardsContainer.style.display = 'block';
+
+    requestAnimationFrame(() => {
+        cardsContainer.classList.add('show');
     });
-}
+
+    // Hide envelope after animation finishes
+    setTimeout(() => {
+        envelopeContainer.style.display = 'none';
+    }, 600);
+});
 
 // ========== CARD NAVIGATION ==========
 // Function to show a specific card and hide others
-function showCard(cardId) {
-    console.log('Showing card:', cardId);
-    
-    // Get all cards
-    const cards = document.querySelectorAll('.card');
-    
-    // Loop through all cards
-    cards.forEach(function(card) {
-        // Remove 'active' class from all cards (hide them)
+function showCard(id) {
+    document.querySelectorAll('.card').forEach(card => {
         card.classList.remove('active');
     });
-    
-    // Add 'active' class to the selected card (show it)
-    const selectedCard = document.getElementById(cardId);
-    if (selectedCard) {
-        selectedCard.classList.add('active');
-        console.log('Card activated:', cardId);
-    } else {
-        console.error('Card not found:', cardId);
-    }
+
+    document.getElementById(id).classList.add('active');
 }
 
 // ========== CLOSE INVITATION ==========
 // Function to close the invitation and go back to envelope
 function closeInvitation() {
-    console.log('Closing invitation...');
-    
-    // Remove the 'open' class from envelope
-    envelope.classList.remove('open');
-    
-    // Hide cards and show envelope again
-    cardsContainer.style.display = 'none';
-    envelopeContainer.style.display = 'flex';
+
+    // Remove animation
+    cardsContainer.classList.remove('show');
+
+    setTimeout(() => {
+
+        // Hide cards
+        cardsContainer.style.display = 'none';
+
+        // Show envelope again
+        envelopeContainer.style.display = 'block';
+
+        // Close envelope
+        envelope.classList.remove('open');
+
+    }, 600);
 }
 
-// ========== KEYBOARD NAVIGATION ==========
+// ========== OPTIONAL: KEYBOARD NAVIGATION ==========
 // Press 'Escape' to close the invitation
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
@@ -73,6 +66,38 @@ document.addEventListener('keydown', function(event) {
 });
 
 // ========== INITIALIZATION ==========
+// Make sure the main card is active when envelope opens
+// (This is set in the HTML, but we can confirm it here)
 window.addEventListener('load', function() {
-    console.log('🎉 Invitation website loaded! Click the envelope to begin.');
+    console.log('Invitation website loaded! Click the envelope to begin.');
+});
+
+document.querySelectorAll('.page-link').forEach(link => {
+
+    link.addEventListener('click', function(e) {
+
+        e.preventDefault();
+
+        const target = this.href;
+
+        // Current page exits
+        document.body.classList.add('fade-out-left');
+
+        // Wait for animation
+        setTimeout(() => {
+            window.location.href = target;
+        }, 500);
+    });
+
+});
+
+// New page entrance animation
+window.addEventListener('load', () => {
+
+    document.body.classList.add('page-enter');
+
+    requestAnimationFrame(() => {
+        document.body.classList.add('page-enter-active');
+    });
+
 });
