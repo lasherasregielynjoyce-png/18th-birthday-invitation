@@ -12,6 +12,13 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
+
+    position: relative;
+    overflow-x: hidden;
+
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 /* ========== ENVELOPE STYLES ========== */
@@ -95,6 +102,17 @@ body {
     width: 100%;
     max-width: 600px;
     position: relative;
+
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    display: none;
+}
+
+.cards-container.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card {
@@ -406,4 +424,58 @@ body {
     .guest-name {
         font-size: 10px;
     }
+}
+.palette {
+    display: flex;
+    gap: 12px;
+    justify-content: center; /* centers the whole palette */
+    margin-top: 20px;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Colors */
+.red { background: #fff2b2; }
+.orange { background: #fff0c9; }
+.yellow { background: #ffe4c7; }
+.green { background: #ffd6c4; }
+.blue { background: #ffc9c8; }
+.indigo { background: #ffb6c1; }
+.violet { background: #ffaec9; }
+
+.no-underline {
+    text-decoration: none;
+}
+
+.envelope-container,
+.cards-container {
+    position: absolute;
+}
+
+/* Current page exits */
+body.fade-out-left {
+    opacity: 0;
+    transform: translateX(-80px);
+}
+
+body.fade-out-right {
+    opacity: 0;
+    transform: translateX(80px);
+}
+
+/* New page enters */
+body.page-enter {
+    opacity: 0;
+    transform: translateX(80px);
+}
+
+body.page-enter-active {
+    opacity: 1;
+    transform: translateX(0);
 }
